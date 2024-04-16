@@ -3,6 +3,12 @@ import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 
 export function PriceChangesGraph({ graphData }) {
     // const colors = ['#5939DA', '#9F338E', '#EE1F2F']; // Array of colors, representing the gradient-like effect
+    console.log('graphData:', graphData)
+
+    const timestamps = graphData?.map(entry => new Date(entry.timestamp));
+    const prices = graphData?.map(entry => entry.price);
+
+    if (!graphData) return <div>Loading...</div>
 
     return (
         <Box sx={{
@@ -12,19 +18,11 @@ export function PriceChangesGraph({ graphData }) {
             justifyContent: 'center'
         }}>
             <SparkLineChart
-                data={[1, 4, 2, 5, 7, 2, 4, 6]}
+                // data={[1, 4, 2, 5, 7, 2, 4, 6]}
+                data={prices}
                 xAxis={{
                     scaleType: 'time',
-                    data: [
-                        new Date(2022, 5, 1),
-                        new Date(2022, 5, 2),
-                        new Date(2022, 5, 5),
-                        new Date(2022, 5, 6),
-                        new Date(2022, 5, 7),
-                        new Date(2022, 5, 8),
-                        new Date(2022, 5, 11),
-                        new Date(2022, 5, 12),
-                    ],
+                    data: timestamps,
                     valueFormatter: (value) => value.toISOString().slice(0, 10),
                 }}
                 showTooltip

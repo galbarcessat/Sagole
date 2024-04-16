@@ -45,23 +45,29 @@ async function getEthData() {
 
 
 async function getTimelinePrices(timeline = 1) {
-    const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${timeline}`)
-    const { prices } = data
+    try {
+        const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${timeline}`)
+        const { prices } = data
 
-    const timelinePrices = []
-    const seenTimestamps = new Set()
+        const timelinePrices = []
+        const seenTimestamps = new Set()
 
-    prices.forEach(([timestamp, price]) => {
-        const date = new Date(timestamp)
-        date.setHours(0, 0, 0, 0)
-        const dateString = date.toDateString()
+        prices.forEach(([timestamp, price]) => {
+            const date = new Date(timestamp)
+            date.setHours(0, 0, 0, 0)
+            const dateString = date.toDateString()
 
-        if (!seenTimestamps.has(dateString)) {
-            seenTimestamps.add(dateString)
-            timelinePrices.push({ timestamp, price })
-        }
-    })
+            if (!seenTimestamps.has(dateString)) {
+                seenTimestamps.add(dateString)
+                timelinePrices.push({ timestamp, price })
+            }
+        })
 
-    return timelinePrices
+        return timelinePrices
+    } catch (error) {
+        console.log('error:', error)
+        throw error
+    }
+
 
 }

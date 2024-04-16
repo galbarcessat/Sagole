@@ -8,8 +8,6 @@ export function CoinDetailsFooter({ totalVolume, marketCap }) {
                     <span>24HR VOLUME</span>
                     <KeyboardArrowDownIcon fontSize='small' />
                 </div>
-                {/* <span>$20,214,502,760.01 USD</span> */}
-
                 <span>${Number(totalVolume)?.toLocaleString('en-US')} USD</span>
             </div>
 

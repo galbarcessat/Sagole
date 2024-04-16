@@ -11,7 +11,8 @@ export function CoinDetails() {
     const [dailyPrecentageChange, setDailyPrecentageChange] = useState(null)
     const [currentVolume, setCurrentVolume] = useState(null)
     const [currentMarketCap, setCurrentMarketCap] = useState(null)
-    const [currentTimeline, setCurrentTimeline] = useState(7)
+    const [selectedTimeline, setSelectedTimeline] = useState(7)
+    const [graphData, setGraphData] = useState(null)
 
     // -maybe send the fetch function the timeline - 1D 7D 30D 180D 365D
     // -for now it fetches the day
@@ -21,8 +22,11 @@ export function CoinDetails() {
     useEffect(() => {
         //set interval to half a min - TODO
         fetchEthData()
-        coinService.getTimelinePrices(7)
     }, [])
+
+    useEffect(() => {
+        getGraphData()
+    }, [selectedTimeline])
 
 
     async function fetchEthData() {
@@ -36,6 +40,19 @@ export function CoinDetails() {
         } catch (error) {
             console.log('error:', error)
         }
+    }
+
+    async function getGraphData() {
+        const timelineData = await coinService.getTimelinePrices(selectedTimeline)
+        setGraphData(timelineData)
+
+        // try {
+        //     const timelineData = await coinService.getTimelinePrices(selectedTimeline)
+        //     setGraphData(timelineData)
+        // } catch (error) {
+        //     console.log('error:', error)
+        // }
+
     }
 
     function getLatestPrice(prices) {
@@ -52,11 +69,11 @@ export function CoinDetails() {
         return +change.toFixed(2)
     }
 
-    console.log('currentPrice:', currentPrice)
-    console.log('dailyPrecentageChange:', dailyPrecentageChange)
-    console.log('currentVolume:', currentVolume)
-    console.log('currentMarketCap:', currentMarketCap)
-   
+    // console.log('currentPrice:', currentPrice)
+    // console.log('dailyPrecentageChange:', dailyPrecentageChange)
+    // console.log('currentVolume:', currentVolume)
+    // console.log('currentMarketCap:', currentMarketCap)
+
     return (
         <div className="coin-details-container">
             <CoinDetailsHeader />
@@ -72,8 +89,8 @@ export function CoinDetails() {
                     <h2>Last week changes</h2>
                 </div>
 
-                <PriceChangesGraph />
-                <TimelineChange currentTimeline={currentTimeline} setCurrentTimeline={setCurrentTimeline} />
+                <PriceChangesGraph graphData={graphData} />
+                <TimelineChange selectedTimeline={selectedTimeline} setSelectedTimeline={setSelectedTimeline} />
             </div>
 
             <CoinDetailsFooter marketCap={currentMarketCap} totalVolume={currentVolume} />
