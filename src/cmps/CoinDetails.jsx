@@ -14,20 +14,28 @@ export function CoinDetails() {
     const [selectedTimeline, setSelectedTimeline] = useState(7)
     const [graphData, setGraphData] = useState(null)
 
-    // -maybe send the fetch function the timeline - 1D 7D 30D 180D 365D
-    // -for now it fetches the day
     // -Change graph color to gradient - TODO 
-    // -change graph timeline 
-
+    // -Try to fix 1Y timeline not working 
     useEffect(() => {
-        //set interval to half a min - TODO
         fetchEthData()
+
+        const interval = setInterval(() => {
+            fetchEthData()
+        }, 30000)
+
+        return () => clearInterval(interval)
+
     }, [])
 
     useEffect(() => {
         getGraphData()
-    }, [selectedTimeline])
 
+        const interval = setInterval(() => {
+            getGraphData()
+        }, 30000)
+
+        return () => clearInterval(interval)
+    }, [selectedTimeline])
 
     async function fetchEthData() {
         try {
