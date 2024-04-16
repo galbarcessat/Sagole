@@ -1,14 +1,15 @@
+import axios from 'axios'
 import { storageService } from './async-storage.service.js'
-import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'coinDB'
 const BASE_URL = 'coin'
 
-export const boardService = {
+export const coinService = {
     query,
     update,
     save,
-    remove
+    remove,
+    getEthData
 }
 
 // Coin functions
@@ -26,4 +27,14 @@ async function remove(coinId) {
 
 async function update(coin) {
     return await storageService.put(STORAGE_KEY, coin)
+}
+
+async function getEthData() {
+    const { data } = await axios.get('https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=1')
+    return {
+        marketcap: data.market_caps[data.market_caps.length - 1],
+        prices: data.prices,
+        totalvolume: data.total_volumes[data.total_volumes.length - 1]
+    }
+
 }

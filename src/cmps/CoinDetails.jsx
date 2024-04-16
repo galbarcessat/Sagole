@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { coinService } from "../services/coin.service.local";
 import { CoinDetailsFooter } from "./CoinDetailsFooter";
 import { CoinDetailsHeader } from "./CoinDetailsHeader";
 import { PercentageChange } from "./PercentageChange";
@@ -5,6 +7,15 @@ import { PriceChangesGraph } from "./PriceChangesGraph";
 import { TimelineChange } from "./TimelineChange";
 
 export function CoinDetails() {
+
+    useEffect(() => {
+        fetchEthData()
+    }, [])
+
+    async function fetchEthData() {
+        const data = await coinService.getEthData()
+        console.log('data:', data)
+    }
 
     return (
         <div className="coin-details-container">

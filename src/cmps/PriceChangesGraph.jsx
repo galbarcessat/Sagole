@@ -1,5 +1,7 @@
 export function PriceChangesGraph() {
     return (
-        <div className="price-changes-graph">PriceChangesGraph</div>
+        <div className="price-changes-graph">
+            Graph
+        </div>
     )
 }
