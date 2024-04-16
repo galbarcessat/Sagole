@@ -10,6 +10,11 @@
 
 // // COMPONENTS
 @import "cmps/CoinDetails.scss";
+@import "cmps/CoinDetailsHeader.scss";
+@import "cmps/CoinDetailsFooter.scss";
+@import "cmps/PercentageChange.scss";
+@import "cmps/PriceChangesGraph.scss";
+@import "cmps/TimelineChange.scss";
 
 // //PAGES
 @import "pages/HomePage.scss";

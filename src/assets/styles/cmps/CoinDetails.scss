@@ -2,6 +2,38 @@
     width: 500px;
     height: 450px;
     background-color: #242329;
+    color: white;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
+
+    .inner-container {
+        display: flex;
+        flex-direction: column;
+        background-color: #1A1A1A;
+        height: 75%;
+        border-radius: 1rem;
+        padding: 1rem;
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 1.2rem;
+
+            .updated-price-container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            h2 {
+                font-size: .7rem;
+                font-weight: 600;
+                color: #4A4A4A;
+            }
+        }
+    }
 }
