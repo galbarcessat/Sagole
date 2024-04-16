@@ -29,12 +29,6 @@ export function CoinDetails() {
 
     useEffect(() => {
         getGraphData()
-
-        const interval = setInterval(() => {
-            getGraphData()
-        }, 30000)
-
-        return () => clearInterval(interval)
     }, [selectedTimeline])
 
     async function fetchEthData() {
