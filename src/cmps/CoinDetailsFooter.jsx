@@ -8,13 +8,15 @@ export function CoinDetailsFooter({ totalVolume, marketCap }) {
                     <span>24HR VOLUME</span>
                     <KeyboardArrowDownIcon fontSize='small' />
                 </div>
-                {/* <span>₪20,214,502,760.01 ILS</span> */}
-                <span>₪{totalVolume} ILS</span>
+                {/* <span>$20,214,502,760.01 USD</span> */}
+
+                <span>${Number(totalVolume)?.toLocaleString('en-US')} USD</span>
             </div>
 
             <div className='market-cap-container'>
                 <span>MARKET CAP</span>
-                <span>₪{marketCap} ILS</span>
+
+                <span>${Number(marketCap)?.toLocaleString('en-US')} USD</span>
             </div>
         </div>
     )

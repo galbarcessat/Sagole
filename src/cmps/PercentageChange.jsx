@@ -11,7 +11,7 @@ export function PercentageChange({ change }) {
     }, [change])
 
     return (
-        <div style={{ backgroundColor: isChangeUp ? 'green' : 'red' }} className='percentage-change'>
+        <div style={{ backgroundColor: isChangeUp ? 'green' : '#FC0100' }} className='percentage-change'>
             {/* arrow should change if up or down  */}
             {isChangeUp ?
                 <KeyboardArrowUpIcon fontSize='small' />

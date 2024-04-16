@@ -2,9 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-block-start: 1rem;
-    font-size: .7rem;
+    font-size: .8rem;
 
     .change-volume-timeline {
         display: flex;
@@ -16,7 +15,6 @@
     .market-cap-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
 
         span {

@@ -11,12 +11,15 @@ export function CoinDetails() {
     const [dailyPrecentageChange, setDailyPrecentageChange] = useState(null)
     const [currentVolume, setCurrentVolume] = useState(null)
     const [currentMarketCap, setCurrentMarketCap] = useState(null)
+    const [currentTimeline, setCurrentTimeline] = useState(7)
+
     // -maybe send the fetch function the timeline - 1D 7D 30D 180D 365D
     // -for now it fetches the day
-    // -send to each component the type of currency it is dollar/shekel 
+    // -Change graph color to gradient - TODO 
+    // -change graph timeline 
 
     useEffect(() => {
-        //set interval to half a min 
+        //set interval to half a min - TODO
         fetchEthData()
     }, [])
 
@@ -50,7 +53,6 @@ export function CoinDetails() {
 
     console.log('currentPrice:', currentPrice)
     console.log('dailyPrecentageChange:', dailyPrecentageChange)
-    console.log('asdsa:',typeof dailyPrecentageChange)
     console.log('currentVolume:', currentVolume)
     console.log('currentMarketCap:', currentMarketCap)
     return (
@@ -61,8 +63,9 @@ export function CoinDetails() {
 
                 <div className="header">
                     <div className="updated-price-container">
-                        <h1>₪6,546.25 ILS</h1>
-                        <PercentageChange change={dailyPrecentageChange}/>
+                        {/* <h1>$6,546.25 USD</h1> */}
+                        <h1>${Number(currentPrice?.toFixed(2)).toLocaleString('en-US')} USD</h1>
+                        <PercentageChange change={dailyPrecentageChange} />
                     </div>
                     <h2>Last week changes</h2>
                 </div>
@@ -71,7 +74,7 @@ export function CoinDetails() {
                 <TimelineChange />
             </div>
 
-            <CoinDetailsFooter marketCap={currentMarketCap} totalVolume={currentVolume}/>
+            <CoinDetailsFooter marketCap={currentMarketCap} totalVolume={currentVolume} />
         </div>
     )
 }

@@ -2,14 +2,14 @@ import axios from 'axios'
 import { storageService } from './async-storage.service.js'
 
 const STORAGE_KEY = 'coinDB'
-const BASE_URL = 'coin'
+const VITE_FCS_EXCHANGE_API_KEY = import.meta.env.VITE_FCS_EXCHANGE_API_KEY;
 
 export const coinService = {
     query,
     update,
     save,
     remove,
-    getEthData
+    getEthData,
 }
 
 // Coin functions
@@ -38,8 +38,7 @@ async function getEthData() {
             totalvolume: data.total_volumes[data.total_volumes.length - 1]
         }
     } catch (error) {
+        console.log('error:', error)
         throw error
     }
-
-
 }
