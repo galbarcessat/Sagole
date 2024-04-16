@@ -15,7 +15,8 @@ export function CoinDetails() {
     const [graphData, setGraphData] = useState(null)
 
     // -Change graph color to gradient - TODO 
-    // -Try to fix 1Y timeline not working 
+    // -Add eventbus notifications 
+
     useEffect(() => {
         fetchEthData()
 
@@ -45,16 +46,12 @@ export function CoinDetails() {
     }
 
     async function getGraphData() {
-        const timelineData = await coinService.getTimelinePrices(selectedTimeline)
-        setGraphData(timelineData)
-
-        // try {
-        //     const timelineData = await coinService.getTimelinePrices(selectedTimeline)
-        //     setGraphData(timelineData)
-        // } catch (error) {
-        //     console.log('error:', error)
-        // }
-
+        try {
+            const timelineData = await coinService.getTimelinePrices(selectedTimeline)
+            setGraphData(timelineData)
+        } catch (error) {
+            console.log('error:', error)
+        }
     }
 
     function getLatestPrice(prices) {
