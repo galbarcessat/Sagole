@@ -2,7 +2,6 @@ import axios from 'axios'
 import { storageService } from './async-storage.service.js'
 
 const STORAGE_KEY = 'coinDB'
-const VITE_FCS_EXCHANGE_API_KEY = import.meta.env.VITE_FCS_EXCHANGE_API_KEY;
 
 export const coinService = {
     query,
@@ -10,6 +9,7 @@ export const coinService = {
     save,
     remove,
     getEthData,
+    getTimelinePrices
 }
 
 // Coin functions
@@ -41,4 +41,27 @@ async function getEthData() {
         console.log('error:', error)
         throw error
     }
+}
+
+
+async function getTimelinePrices(timeline = 1) {
+    const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=${timeline}`)
+    const { prices } = data
+
+    const timelinePrices = []
+    const seenTimestamps = new Set()
+
+    prices.forEach(([timestamp, price]) => {
+        const date = new Date(timestamp)
+        date.setHours(0, 0, 0, 0)
+        const dateString = date.toDateString()
+
+        if (!seenTimestamps.has(dateString)) {
+            seenTimestamps.add(dateString)
+            timelinePrices.push({ timestamp, price })
+        }
+    })
+
+    return timelinePrices
+
 }

@@ -1,4 +1,4 @@
-.timeline-change-container{
+.timeline-change-container {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -6,8 +6,11 @@
     font-size: .8rem;
     font-weight: 600;
     color: #4A4A4A;
-    span{
-        &:first-of-type{
+
+    span {
+        cursor: pointer;
+
+        &.selected {
             color: white;
         }
     }

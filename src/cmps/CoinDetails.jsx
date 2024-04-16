@@ -21,6 +21,7 @@ export function CoinDetails() {
     useEffect(() => {
         //set interval to half a min - TODO
         fetchEthData()
+        coinService.getTimelinePrices(7)
     }, [])
 
 
@@ -55,6 +56,7 @@ export function CoinDetails() {
     console.log('dailyPrecentageChange:', dailyPrecentageChange)
     console.log('currentVolume:', currentVolume)
     console.log('currentMarketCap:', currentMarketCap)
+   
     return (
         <div className="coin-details-container">
             <CoinDetailsHeader />
@@ -71,7 +73,7 @@ export function CoinDetails() {
                 </div>
 
                 <PriceChangesGraph />
-                <TimelineChange />
+                <TimelineChange currentTimeline={currentTimeline} setCurrentTimeline={setCurrentTimeline} />
             </div>
 
             <CoinDetailsFooter marketCap={currentMarketCap} totalVolume={currentVolume} />
