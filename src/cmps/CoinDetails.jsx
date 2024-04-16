@@ -68,6 +68,13 @@ export function CoinDetails() {
         return +change.toFixed(2)
     }
 
+    function getTimelineText() {
+        if (selectedTimeline === 7) return 'week'
+        else if (selectedTimeline === 30) return 'month'
+        else if (selectedTimeline === 180) return 'half year'
+        else if (selectedTimeline === 365) return 'year'
+    }
+
     // console.log('currentPrice:', currentPrice)
     // console.log('dailyPrecentageChange:', dailyPrecentageChange)
     // console.log('currentVolume:', currentVolume)
@@ -85,7 +92,7 @@ export function CoinDetails() {
                         <h1>${Number(currentPrice?.toFixed(2)).toLocaleString('en-US')} USD</h1>
                         <PercentageChange change={dailyPrecentageChange} />
                     </div>
-                    <h2>Last week changes</h2>
+                    <h2>Last {getTimelineText()} changes</h2>
                 </div>
 
                 <PriceChangesGraph graphData={graphData} />
