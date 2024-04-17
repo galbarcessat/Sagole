@@ -8,7 +8,7 @@ export function HomePage() {
     return (
         <div className="home-page-container">
             <CoinDetails currentPrice={currentPrice} setCurrentPrice={setCurrentPrice}/>
-            <Converter currentPrice={currentPrice}/>
+            <Converter currentEthPrice={currentPrice}/>
         </div>
     )
 }

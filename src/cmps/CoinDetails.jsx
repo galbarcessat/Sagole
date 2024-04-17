@@ -14,7 +14,7 @@ export function CoinDetails({ currentPrice, setCurrentPrice }) {
     const [graphData, setGraphData] = useState(null)
 
     // -Change graph color to gradient - TODO 
-    
+
     useEffect(() => {
         fetchEthData()
 
@@ -22,12 +22,13 @@ export function CoinDetails({ currentPrice, setCurrentPrice }) {
             fetchEthData()
         }, 30000)
 
+        console.log('test:')
         return () => clearInterval(interval)
-
     }, [])
 
     useEffect(() => {
         getGraphData()
+        console.log('test:')
     }, [selectedTimeline])
 
     async function fetchEthData() {
