@@ -6,8 +6,7 @@ import { PercentageChange } from "./PercentageChange";
 import { PriceChangesGraph } from "./PriceChangesGraph";
 import { TimelineChange } from "./TimelineChange";
 
-export function CoinDetails() {
-    const [currentPrice, setCurrentPrice] = useState(null)
+export function CoinDetails({ currentPrice, setCurrentPrice }) {
     const [dailyPrecentageChange, setDailyPrecentageChange] = useState(null)
     const [currentVolume, setCurrentVolume] = useState(null)
     const [currentMarketCap, setCurrentMarketCap] = useState(null)
@@ -15,8 +14,7 @@ export function CoinDetails() {
     const [graphData, setGraphData] = useState(null)
 
     // -Change graph color to gradient - TODO 
-    // -Add eventbus notifications 
-
+    
     useEffect(() => {
         fetchEthData()
 
@@ -88,7 +86,6 @@ export function CoinDetails() {
 
                 <div className="header">
                     <div className="updated-price-container">
-                        {/* <h1>$6,546.25 USD</h1> */}
                         <h1>${Number(currentPrice?.toFixed(2)).toLocaleString('en-US')} USD</h1>
                         <PercentageChange change={dailyPrecentageChange} />
                     </div>
