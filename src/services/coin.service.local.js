@@ -1,34 +1,11 @@
 import axios from 'axios'
-import { storageService } from './async-storage.service.js'
-
-const STORAGE_KEY = 'coinDB'
 
 export const coinService = {
-    query,
-    update,
-    save,
-    remove,
     getEthData,
     getTimelinePrices
 }
 
 // Coin functions
-async function query() {
-    return await storageService.query(STORAGE_KEY)
-}
-
-async function save(coin) {
-    return await storageService.post(STORAGE_KEY, coin)
-}
-
-async function remove(coinId) {
-    return await storageService.remove(STORAGE_KEY, coinId)
-}
-
-async function update(coin) {
-    return await storageService.put(STORAGE_KEY, coin)
-}
-
 async function getEthData() {
     try {
         const { data } = await axios.get('https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=1')
