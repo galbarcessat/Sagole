@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $primary-text-color;
     gap: 1.2rem;
 
     h1 {
@@ -27,13 +27,13 @@
                 border-radius: .7rem;
                 outline: none;
                 border: none;
-                color: white;
-                background-color: #242329;
+                color: $primary-text-color;
+                background-color: $card-primary-background-color;
                 font-size: 1.2rem;
             }
 
             span {
-                background-color: #1A1A1A;
+                background-color: $card-secondary-background-color;
                 padding: .5rem;
                 border-radius: .7rem;
 
@@ -46,7 +46,7 @@
         .arrows-icon-container {
             padding: .3rem;
             border-radius: .7rem;
-            background-color: #1A1A1A;
+            background-color: $card-secondary-background-color;
 
         }
     }

@@ -5,14 +5,14 @@
     gap: .3rem;
     font-size: .8rem;
     font-weight: 600;
-    color: #4A4A4A;
+    color: $secondary-text-color;
     padding: 1rem;
 
     span {
         cursor: pointer;
 
         &.selected {
-            color: white;
+            color: $primary-text-color;
         }
     }
 }
