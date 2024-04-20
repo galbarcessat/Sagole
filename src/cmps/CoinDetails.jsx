@@ -13,7 +13,8 @@ export function CoinDetails({ currentPrice, setCurrentPrice }) {
     const [selectedTimeline, setSelectedTimeline] = useState(7)
     const [graphData, setGraphData] = useState(null)
 
-    // -Change graph color to gradient - TODO 
+    // -Change graph color to gradient - DONE  
+    // -Uninstall muix used chartJS instead - TODO
 
     useEffect(() => {
         fetchEthData()
