@@ -15,11 +15,9 @@ async function getEthData() {
             totalvolume: data.total_volumes[data.total_volumes.length - 1]
         }
     } catch (error) {
-        console.log('error:', error)
         throw error
     }
 }
-
 
 async function getTimelinePrices(timeline = 1) {
     try {
@@ -42,9 +40,6 @@ async function getTimelinePrices(timeline = 1) {
 
         return timelinePrices
     } catch (error) {
-        console.log('error:', error)
         throw error
     }
-
-
 }

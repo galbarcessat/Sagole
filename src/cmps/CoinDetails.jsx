@@ -22,13 +22,11 @@ export function CoinDetails({ currentPrice, setCurrentPrice }) {
             fetchEthData()
         }, 30000)
 
-        console.log('test:')
         return () => clearInterval(interval)
     }, [])
 
     useEffect(() => {
         getGraphData()
-        console.log('test:')
     }, [selectedTimeline])
 
     async function fetchEthData() {
@@ -73,11 +71,6 @@ export function CoinDetails({ currentPrice, setCurrentPrice }) {
         else if (selectedTimeline === 180) return 'half year'
         else if (selectedTimeline === 365) return 'year'
     }
-
-    // console.log('currentPrice:', currentPrice)
-    // console.log('dailyPrecentageChange:', dailyPrecentageChange)
-    // console.log('currentVolume:', currentVolume)
-    // console.log('currentMarketCap:', currentMarketCap)
 
     return (
         <div className="coin-details-container">

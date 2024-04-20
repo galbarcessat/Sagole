@@ -1,13 +1,11 @@
 import { useState } from "react";
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 export function Converter({ currentEthPrice }) {
-  // const [currentEthValue, setCurrentEthValue] = useState(3064.84)
   const [usdAmount, setUsdAmount] = useState('')
   const [ethAmount, setEthAmount] = useState(currentEthPrice || '')
 
   function handleInputChange(event, type) {
     const value = event.target.value
-    console.log('value:', value)
     if (!/^\d*\.?\d*$/.test(value)) return
     if (type === 'usd') {
       setUsdAmount(value)
