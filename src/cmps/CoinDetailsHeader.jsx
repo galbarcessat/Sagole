@@ -1,6 +1,5 @@
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-
 export function CoinDetailsHeader() {
     return (
         <div className="coin-header">

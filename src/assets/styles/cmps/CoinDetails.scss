@@ -1,6 +1,5 @@
 .coin-details-container {
     width: 570px;
-    // height: 500px;
     background-color: $card-primary-background-color;
     color: $primary-text-color;
     border-radius: .7rem;
@@ -10,7 +9,6 @@
         display: flex;
         flex-direction: column;
         background-color: $card-secondary-background-color;
-        // height: 75%;
         border-radius: .7rem;
 
         .header {
