@@ -14,7 +14,6 @@ ChartJS.register(
 export function PriceChangesGraph({ graphData }) {
     const chartRef = useRef(null)
     const [chartData, setChartData] = useState({ datasets: [] })
-
     useEffect(() => {
         const chart = chartRef.current
 
@@ -22,8 +21,8 @@ export function PriceChangesGraph({ graphData }) {
             return
         }
 
-        const timestamps = graphData.map(entry => new Date(entry.timestamp))
-        const prices = graphData.map(entry => entry.price)
+        const timestamps = graphData.map(data => new Date(data.timestamp))
+        const prices = graphData.map(data => data.price)
         const colors = ['#5939DA', '#9F338E', '#EE1F2F']
         const gradient = createGradient(chart.ctx, chart.chartArea, colors)
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
+
 export function Converter({ currentEthPrice }) {
   const [usdAmount, setUsdAmount] = useState('')
   const [ethAmount, setEthAmount] = useState(currentEthPrice || '')
@@ -9,11 +10,11 @@ export function Converter({ currentEthPrice }) {
     if (!/^\d*\.?\d*$/.test(value)) return
     if (type === 'usd') {
       setUsdAmount(value)
-      const ethValue = value * currentEthPrice
-      setEthAmount(ethValue.toFixed(6))
+      const ethValue = value / currentEthPrice
+      setEthAmount(ethValue.toFixed(5))
     } else if (type === 'eth') {
       setEthAmount(value)
-      const usdValue = value / currentEthPrice
+      const usdValue = value * currentEthPrice
       setUsdAmount(usdValue.toFixed(2))
     }
   }
